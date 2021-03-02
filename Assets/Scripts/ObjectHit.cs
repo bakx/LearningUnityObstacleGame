@@ -7,11 +7,19 @@ public class ObjectHit : MonoBehaviour
     // Event that occurs when a collision starts
     private void OnCollisionEnter(Collision other)
     {
-        GetComponent<MeshRenderer>().material.color = Color.red;
+        if (other.gameObject.tag == "Player") 
+        {
+            GetComponent<MeshRenderer>().material.color = Color.red;
+            gameObject.tag = "Hit";
+        }
+
     }
 
     private void OnCollisionExit(Collision other)
     {
-        GetComponent<MeshRenderer>().material.color = Color.black;
+        if (other.gameObject.tag == "Player") 
+        {
+            GetComponent<MeshRenderer>().material.color = Color.black;
+        }
     }
 }
